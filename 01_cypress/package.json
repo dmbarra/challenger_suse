@@ -1,0 +1,16 @@
+{
+  "name": "Cypress_for_RangeUI",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:local:open": "npx cypress open",
+    "test:local:run": "npx cypress run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.15.0"
+  }
+}
