@@ -21,3 +21,14 @@ _npm install_<br>
 
 **Run automation:**<br>
 _npm run test:local:run_<br>
+
+# Go api test
+
+**REQUIREMENT TO RUN:**<br>
+_To be able to run properly the automation, it's required to set up the password of rancher UI, I did that manually, also after do the change is required to add the values into line 72, on api_test.go_<br>
+
+**Go version:**<br>
+_go 1.17.13_<br>
+
+**Run automation:**<br>
+_go test -v_<br>
