@@ -1,0 +1,30 @@
+---
+- name: Deploy VM on GCP
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Create a VM instance
+      gcp_compute_instance:
+        # Variable references: https://docs.ansible.com/ansible/latest/collections/google/cloud/gcp_compute_instance_module.html
+        name: my-vm-instance #The name of the VM instance.
+        machine_type: f1-micro #The type of machine (e.g., f1-micro for the free tier)
+        zone: us-central1-a #The GCP zone where the instance will be created.
+        project: {{PROJECT_ID}} #Your GCP project ID.
+        auth_kind: serviceaccount #The authentication method; using a service account in this case.
+        service_account_file: {{GOOGLE_APPLICATION_CREDENTIALS}}
+        disks:
+          - auto_delete: true
+            boot: true
+            initialize_params:
+              source_image: projects/suse-cloud/global/images/family/sles-15-sp3
+        network_interfaces:
+          - network: default
+            access_config:
+              - name: External NAT
+                type: ONE_TO_ONE_NAT
+      register: instance
+
+    - name: Output instance information
+      debug:
+        var: instance
+
